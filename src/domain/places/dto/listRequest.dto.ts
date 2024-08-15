@@ -1,17 +1,13 @@
 
-import { IsNotEmpty, IsString, MaxLength } from "class-validator";
-export class CreatePlaceDto {
-  @IsString()
-  @MaxLength(25)
-  @IsNotEmpty()
-  readonly name: string;
+import { IsString, IsPositive, IsOptional, IsInt } from "class-validator";
+export class ListRequestDto {
+  @IsInt()
+  readonly page: number;
 
-  //todo add enum?
-  @IsString()
-  @IsNotEmpty()
-  readonly type: number;
+  @IsPositive()
+  readonly count: number;
 
   @IsString()
-  @IsNotEmpty()
-  readonly address: number;
+  @IsOptional()
+  readonly type: string | undefined;
 }
